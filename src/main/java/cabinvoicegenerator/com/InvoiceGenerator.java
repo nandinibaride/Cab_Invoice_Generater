@@ -1,6 +1,8 @@
 	package cabinvoicegenerator.com;
-	
-	public class InvoiceGenerator
+
+import java.util.Hashtable;
+
+public class InvoiceGenerator
 	{
 		public static final double MINIMUM_COST_PER_KILOMETER = 10.0;
 		public static final int COST_PER_TIME = 1;
@@ -28,6 +30,12 @@
 				}
 			System.out.println(totalFare);
 	        return new InvoiceSummary(rides.length,totalFare);
+		}
+		
+		public InvoiceSummary inVoiceService(Hashtable<Integer, Ride[]> listOfRides){
+	        Ride[] rides = listOfRides.get(1);
+	        InvoiceSummary inVoiceSummary = calculateFare(rides);
+	        return inVoiceSummary;
 		}
    }
 	 
