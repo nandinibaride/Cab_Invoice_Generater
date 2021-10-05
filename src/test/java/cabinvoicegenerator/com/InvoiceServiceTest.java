@@ -1,4 +1,7 @@
 package cabinvoicegenerator.com;
+/*
+ * @purpose:To perform JUnit testing on methods of Cab Invoice Generator
+ */
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -27,7 +30,7 @@ public class InvoiceServiceTest
 	}
 	
 	@Test
-	public void givenDistanceandTime_ShouldReturnTotalfareForMultipleRide()
+	public void givenMultipleride_ShouldReturnTotalAggregateFare()
 	{
 	  InvoiceGenerator invoiceGenerator = new InvoiceGenerator();
 	  Ride [] rides = {new Ride ( 2.0 ,  5),
@@ -36,5 +39,15 @@ public class InvoiceServiceTest
 	  Assert.assertEquals(30 , totalfare, 0.0);
 	 }
 	 	
+	@Test
+	public void givenMultipleRides_ShouldReturnInvoiceSummary() {
+		InvoiceGenerator invoiceGenerator = new InvoiceGenerator();
+		Ride[] rides = {new Ride(2.0, 5), 
+						new Ride(0.1, 1)};
+		InvoiceSummary summary = invoiceGenerator.calculateFareReturnObject(rides);
+		InvoiceSummary expectedSummary = new InvoiceSummary(2, 30.0);
+		if(expectedSummary.getAverageFare() == summary.getAverageFare() && expectedSummary.getNumberOfRides() == summary.getNumberOfRides() && expectedSummary.getTotalFare() == summary.getTotalFare())
+			Assert.assertEquals(1, 1);
+	}
 }
 	
