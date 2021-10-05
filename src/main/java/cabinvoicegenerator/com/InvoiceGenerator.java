@@ -19,14 +19,15 @@
 			  }
 		 }
 		
-		public double calculateTotalFare(Ride [] rides)
+		public InvoiceSummary calculateFare(Ride [] rides)
 		{
 			double totalFare = 0;
 			for(Ride ride: rides)
 			    {
 				 totalFare = totalFare + this.calculateFare(ride.distance , ride.time);
 				}
-			return totalFare;
-	    }
+			System.out.println(totalFare);
+	        return new InvoiceSummary(rides.length,totalFare);
+		}
    }
 	 
