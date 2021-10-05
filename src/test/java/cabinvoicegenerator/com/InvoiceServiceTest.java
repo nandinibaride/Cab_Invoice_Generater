@@ -1,6 +1,7 @@
 package cabinvoicegenerator.com;
+
 /*
- * @purpose:To perform JUnit testing on methods of Cab Invoice Generator
+/* @purpose:To perform JUnit testing on methods of Cab Invoice Generator
  */
 
 import java.util.ArrayList;
@@ -57,5 +58,23 @@ public class InvoiceServiceTest
 		InvoiceSummary expectedSummary = new InvoiceSummary(2, 30.0);
 		Assert.assertEquals(1, 1);
 	}
+	/*
+	 * Test Case 4 : To get list of rides from ride repository when user id is given
+	 */
+	  @Test
+	    public void givenUserID_ShouldGetTheListOfRidesFromRepo_ReturnInVoice()
+	    {
+	        int userID = 1;
+	        Ride[] rides = {
+	                new Ride(2.0, 5),
+	                new Ride(0.1, 1)};
+	        InvoiceSummary summary = inVoiceGenerator.calculateFare(rides);
+
+	        Hashtable<Integer,Ride[]> listOfRides = new Hashtable<>();
+
+	        listOfRides.put(userID,rides);
+	        InvoiceSummary expectedInVoice = inVoiceGenerator.inVoiceService(listOfRides);
+	        Assert.assertEquals(expectedInVoice,summary);
+	    }
 }
 	
