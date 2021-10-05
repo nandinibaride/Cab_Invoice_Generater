@@ -19,24 +19,15 @@
 			  }
 		 }
 		
-		public double calculateTotalFare(Ride [] rides)
-		{
-			double totalAggregateFare = 0;
-			for(Ride ride: rides)
-			    {
-				totalAggregateFare = totalAggregateFare + this.calculateFare(ride.distance , ride.time);
-				}
-			    return totalAggregateFare;
-	    }
-		//The InVoice Generator return total number of rides, total fare & Average fare per ride
-		public InvoiceSummary calculateFareReturnObject(Ride[] rides)
+		public InvoiceSummary calculateFare(Ride [] rides)
 		{
 			double totalFare = 0;
-			for(Ride ride : rides)
-			{
-				totalFare = totalFare + this.calculateFare(ride.distance, ride.time);
-			}
-			return new InvoiceSummary(rides.length, totalFare);
+			for(Ride ride: rides)
+			    {
+				 totalFare = totalFare + this.calculateFare(ride.distance , ride.time);
+				}
+			System.out.println(totalFare);
+	        return new InvoiceSummary(rides.length,totalFare);
 		}
    }
 	 
